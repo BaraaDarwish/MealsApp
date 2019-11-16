@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/models/category_model.dart';
 import './screens/categories_screens.dart';
 import 'screens/categorey_meals_screen.dart';
 import './screens/meal_detals_screen.dart';
@@ -14,41 +13,34 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Mealsiato',
-      
       theme: ThemeData(
-        brightness: Brightness.dark,
-        primarySwatch: Colors.blue,
-        accentColor: Colors.blue,
-        fontFamily: 'Raleway',
-        textTheme: ThemeData.dark().textTheme.copyWith(
-          body1: TextStyle(color: Color.fromRGBO(20, 51, 51, 1),),
-          body2: TextStyle(color: Color.fromRGBO(20, 51, 51, 1),),
-          title: TextStyle(
-            fontSize: 20 , 
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-            fontFamily: 'RobotoCondensed'
-          )
-        ),
-        appBarTheme: AppBarTheme(color: Colors.blue)
-      ),
-      
+          brightness: Brightness.dark,
+          accentColor: Color.fromRGBO(214, 90, 49, 1),
+          fontFamily: 'Raleway',
+          textTheme: ThemeData.dark().textTheme.copyWith(
+              body1: TextStyle(
+                color: Color.fromRGBO(20, 51, 51, 1),
+              ),
+              body2: TextStyle(
+                color: Color.fromRGBO(20, 51, 51, 1),
+              ),
+              title: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                  fontFamily: 'RobotoCondensed')),
+          appBarTheme: AppBarTheme(
+            color: Color.fromRGBO(57, 62, 70, 1),
+          )),
       home: TabsScreen(),
       routes: {
-        CategoryMealsScreen.routName:(ctx) => CategoryMealsScreen(),
-        MealDetailsScreen.routName:(ctx) => MealDetailsScreen(),
-        FiltersScreen.routName:(ctx)=> FiltersScreen(),
-
+        CategoryMealsScreen.routName: (ctx) => CategoryMealsScreen(),
+        MealDetailsScreen.routName: (ctx) => MealDetailsScreen(),
+        FiltersScreen.routName: (ctx) => FiltersScreen(),
       },
-
-      onUnknownRoute: (settings){
-        return MaterialPageRoute(builder: (ctx)=> CategoriesSCreen());
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(builder: (ctx) => CategoriesSCreen());
       },
-    
-      
     );
   }
 }
-
-
-
