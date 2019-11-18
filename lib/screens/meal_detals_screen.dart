@@ -3,7 +3,9 @@ import '../dummy-data.dart';
 
 class MealDetailsScreen extends StatelessWidget {
   static const routName = '/meal_details';
-
+  final Function toggleFavorite;
+  final Function isFavorite;
+  MealDetailsScreen(this.isFavorite,this.toggleFavorite);
   Widget buildSectionTitle(title) {
     return Container(
       child: Text(title,
@@ -28,17 +30,7 @@ class MealDetailsScreen extends StatelessWidget {
         child: child);
   }
 
-  void _favorite(mealID) {
-    DUMMY_MEALS.firstWhere((meal) {
-      if (meal.id == mealID) {
-        if (meal.isFavorite)
-          meal.isFavorite = false;
-        else
-          meal.isFavorite = true;
-        return meal.id == mealID;
-      }
-    });
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -50,8 +42,11 @@ class MealDetailsScreen extends StatelessWidget {
         actions: <Widget>[
           InkWell(
             child:
-                Icon(selectedMeal.isFavorite ? Icons.star : Icons.star_border),
-            onTap: () => {_favorite(selectedMeal.id)},
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Icon(isFavorite(mealId) ? Icons.star : Icons.star_border ),
+            ),
+            onTap: () => {toggleFavorite(mealId)},
           )
         ],
       ),
@@ -115,9 +110,9 @@ class MealDetailsScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.delete),
+        child: Icon(isFavorite(mealId) ?Icons.star : Icons.star_border),
         onPressed: () {
-          Navigator.of(context).pop(mealId);
+          toggleFavorite(mealId);
         },
       ),
     );

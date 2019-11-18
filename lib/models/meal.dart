@@ -24,9 +24,8 @@ class Meal{
   final bool isVegan;
   final bool isLactoseFree;
   final bool isVegetarian;
-  bool isFavorite = false;
 
-   Meal({@required this.id ,
+   const Meal({@required this.id ,
         @required this.categories,
         @required this.imageUrl,
         @required this.ingredients,
@@ -38,7 +37,6 @@ class Meal{
         @required this.isGlutenFree,
         @required this.isLactoseFree,
         @required this.isVegan,
-        @required this.isVegetarian,
-        this.isFavorite = false});
+        @required this.isVegetarian,});
 
 }
