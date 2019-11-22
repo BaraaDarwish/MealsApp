@@ -21,6 +21,6 @@ class FavoritesScreen extends StatelessWidget {
       },
       itemCount: favorites.length,
     )
-        : Text("You have no favorite Meals");
+        : Center(child:Text("You have no favorite Meals" , style: TextStyle(color: Colors.white),));
   }
 }
